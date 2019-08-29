@@ -1,5 +1,5 @@
 #include<iostream>
-#include<../headers/serial.hpp>
+#include<../header/serial.hpp>
 #include"Python.h"
 void send_data(int send_num)
 {
