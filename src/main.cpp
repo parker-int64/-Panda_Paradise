@@ -5,10 +5,10 @@
 // For windows user: serial_com.py serial_com.cpp
 #include<iostream>
 #include<thread>
-#include"../headers/Objects.hpp"
-#include"../headers/imageProcess.hpp"
+#include"../header/Objects.hpp"
+#include"../header/imageProcess.hpp"
 //#include"../headers/angleSolve.hpp"
-#include"../headers/serial.hpp"
+#include"../header/serial.hpp"
 
 /*--------------------主函数-----------------*/
 int main(int argc, char* argv[]) {
