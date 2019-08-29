@@ -1,7 +1,7 @@
 #include<iostream>
 #include"Python.h"
-#include "../headers/imageProcess.hpp"
-#include "../headers/serial.hpp"
+#include "../header/imageProcess.hpp"
+#include "../header/serial.hpp"
 #include<opencv2/opencv.hpp>
 #include"unistd.h"
 #include<thread>
