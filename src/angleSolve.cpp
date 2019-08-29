@@ -1,5 +1,5 @@
 #include<iostream>
-#include"../headers/angleSolve.hpp"
+#include"../header/angleSolve.hpp"
 
 void getxy(){
 
