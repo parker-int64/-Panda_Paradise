@@ -1,7 +1,7 @@
 #include<iostream>
 #include"Python.h"
-#include "../header/imageProcess.hpp"
-#include "../header/serial.hpp"
+#include "../headers/imageProcess.hpp"
+#include "../headers/serial.hpp"
 #include<opencv2/opencv.hpp>
 #include"unistd.h"
 #include<thread>
@@ -9,10 +9,12 @@
 using namespace cv;
 volatile unsigned int prdIdx;
 volatile unsigned int csmIdx;
+extern int ex_num;
+int ex_num;
 
 struct imgData{
     Mat img;
-    //int send;
+    // int send;
     //unsigned int count_frame;
 
 };
@@ -26,9 +28,9 @@ Mat frame;
 void getimage(){
      VideoCapture cap;
      cap.open("E:\\Panda\\9_720.mp4");
-     //cap.open(0);
-    //cap.set(CV_CAP_PROP_FRAME_WIDTH,1280);
-    //cap.set(CV_CAP_PROP_FRAME_HEIGHT,720);
+    //cap.open(1);
+    //cap.set(CV_CAP_PROP_FRAME_WIDTH,640);
+    //cap.set(CV_CAP_PROP_FRAME_HEIGHT,480);
      if(!cap.isOpened()){
          std::cerr <<"unable to open the video.\n";
      }
@@ -170,16 +172,15 @@ void green_processimage(){
     }
 
     imshow("src",src_img);  
-    if(contours.size()){
+    if(contours.size()){ 
         int send_num = 1;
-        //sleep(5);
-        send_data(send_num);
+        ex_num = send_num;
         std::cout << "Transfer! " << send_num << std::endl;
     }
     else{
         int send_num = 0;
-        send_data(send_num);
-        std::cout << "Stop! " << send_num << std::endl;
+        ex_num = send_num;
+        std::cout << "Transfer! " << ex_num << std::endl;
     } 
     if(waitKey(16) >= 0) 
     break;
@@ -317,14 +318,14 @@ void red_processimage(){
 
     imshow("src_1",src_img);
      if(contours.size()){
-         sleep(100);
+        // sleep(100);
         int send_num = 1;
-        send_data(send_num);
+        ex_num = send_num;
         std::cout << "Transfer! " << send_num << std::endl;
     }
     else{
         int send_num = 0;
-        send_data(send_num);
+        ex_num = send_num;
         std::cout << "Stop! " << send_num << std::endl;
     } 
 
@@ -335,13 +336,3 @@ void red_processimage(){
     
 }
 
-
-// int main(){
-//     std::thread read_frame(getimage);
-//     std::thread process_frame_green(green_processimage);
-//     //std::thread process_frame_red(red_processimage);
-//     read_frame.join();
-//     process_frame_green.join();
-//     //process_frame_red.join();
-    
-// }

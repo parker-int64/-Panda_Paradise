@@ -5,10 +5,11 @@
 // For windows user: serial_com.py serial_com.cpp
 #include<iostream>
 #include<thread>
-#include"../header/Objects.hpp"
-#include"../header/imageProcess.hpp"
+#include"../headers/Objects.hpp"
+#include"../headers/imageProcess.hpp"
 //#include"../headers/angleSolve.hpp"
-#include"../header/serial.hpp"
+#include"../headers/serial.hpp"
+extern int ex_num;
 
 /*--------------------主函数-----------------*/
 int main(int argc, char* argv[]) {
@@ -25,7 +26,7 @@ int main(int argc, char* argv[]) {
 
     //输出提示
     std::cout << "[Starting Program]" << std::endl;
-    std::cout <<"[Usage]set 0 means Red,set 1 for Blue\n";
+    std::cout <<"[Usage]set 0 for Red,set 1 for Green\n";
 
 
     //0表示红色
@@ -35,8 +36,13 @@ int main(int argc, char* argv[]) {
         std::cout << "Your setting " << atoi(argv[1])  << " (Red)." << std::endl;
         std::thread read_frame(getimage);
         std::thread process_frame_red(red_processimage);
+        while(1){
+        std::thread send(send_data,ex_num);
+        send.join();
+        }
         read_frame.join();
         process_frame_red.join();
+        
     }
 
     //1表示绿色
@@ -46,9 +52,12 @@ int main(int argc, char* argv[]) {
         std::cout << "Your setting " << atoi(argv[1]) << " (Green)." << std::endl;
         std::thread read_frame(getimage);
         std::thread process_frame_green(green_processimage);
+       while(1){
+        std::thread send(send_data,ex_num);
+        send.join();
+        }
         read_frame.join();
         process_frame_green.join();
-        
     } 
     else
     {
