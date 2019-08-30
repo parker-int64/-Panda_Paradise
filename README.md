@@ -28,3 +28,7 @@
 
 ·Linux 用户可以使用`pkg-config --cflags opencv`和`pkg-config --libs opencv`来寻找opencv库。
 
+# 2019/8/30 更新（v0.0.1）
+·把串口传输从图像处理的循环中抽出来
+
+·新建一个线程用于串口数据发送
