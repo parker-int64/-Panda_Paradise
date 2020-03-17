@@ -1,0 +1,11 @@
+%YAML:1.0
+---
+low_hsv: [ 45., 43., 46., 0. ]
+high_hsv: [ 90., 255., 255., 0. ]
+morph_size: [ 10, 10 ]
+median_blur_kernel_size: 5
+canny_threshold1: 100.
+canny_threshold2: 255.
+find_contours_mode: 3
+find_contours_method: 2
+select_contour_size: 60

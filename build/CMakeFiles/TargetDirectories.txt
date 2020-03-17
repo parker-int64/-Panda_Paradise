@@ -1,0 +1,3 @@
+/Users/maomac/Desktop/github/build/CMakeFiles/rebuild_cache.dir
+/Users/maomac/Desktop/github/build/CMakeFiles/edit_cache.dir
+/Users/maomac/Desktop/github/build/CMakeFiles/main.dir

@@ -1,31 +1,49 @@
-# 在branch下选择不同版本以查看更新日志
-# Panda_Paradise
-2019年四川省机器人大赛熊猫乐园代码
-·Created by Parker 
+# 基于OpenCV的颜色识别
 
-·Requirements: opencv 3 or later, python (pyserial)
+## 环境说明
 
-·Use camera please uncomment the *cap.open(0)* in imageProcess.cpp.
+1. OpenCV 4.2，如果是OpenCV 3.x需要更改部分参数。
+2. MacOS High Sierra
+3. 编译器clang++ v10.0
+4. mac只能在主线程中调用OpenCV的按键操作，所以需要在`main.cpp`中注释掉9-11行，并取消第14-15行的注释。
+5. 默认识别的颜色是绿色，可以再UI界面调参保存后修改参数。
 
-·For linux user: serial_dev.py serial_dev.cpp (NOTE:change your serial port)
+### 使用cvui动态调参
 
-·For windows user: serial_com.py serial_com.cpp(NOTE:change your serial port)
+运行方式：
 
-·For linux user: use pkg-config to find your include files or library files.
+```SHELL
+cd build
+cmake ..
+./main
+```
 
+成功运行后会显示如下：
 
+![运行界面](./data/running.png)
+设置好参数后，可以点击Sava Parameters按钮来保存参数至`data/settings.yml`,然后可以根据参数来修改源程序的值。  
+后续工作：可以直接从settings.yml读取参数。  
 
-说明
+UI功能介绍：
 
-·直接git到本地目录，环境：opencv3及以后版本，调用python（pyserial）用于串口传输。
+1. HSV参数调整(HSV Control Interface)
+2. 中值滤波核大小(Blur Kernel Size)
+3. 形态学开闭操作元素大小(MorphologyEx Kernel Size)
+4. Canny阈值设置(Canny Threshold)
+5. 轮廓寻找模式和寻找方法(Mode,Method）
+6. 轮廓点大小取舍(< x will be ereased)
+7. 显示过程图像（hsv图->滤波图->边缘检测图->轮廓图） (Show Debug Images)默认关闭，勾选即可打开
 
-·如果想使用摄像头请请取消在imageProcess.cpp中cap.open(0)的注释。
+### 在release模式下使用
 
-·linux下请取消serial_dev.cpp的注释，并将serial_com.cpp的内容注释掉，更改自己的串口。
+默认的cmake模式是DEBUG模式，如果调好了参数后，不想显示cvui界面，可在`CMakeLists.txt`中第4行去掉`-DDEBUG`。
 
-·windows相反。
+### 特别感谢
 
-·CMakeList请根据自己的情况修改opencv的头文件和库文件，还有python的头文件和库文件。
+cvui的作者以及cvui项目。
 
-·Linux 用户可以使用`pkg-config --cflags opencv`和`pkg-config --libs opencv`来寻找opencv库。
+[地址](https://github.com/Dovyski/cvui/)
 
+[cvui使用指南](https://dovyski.github.io/cvui/)
+
+cvui是一个只需要OpenCV就可以使用的简易UI库。

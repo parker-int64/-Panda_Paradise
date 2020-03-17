@@ -1,0 +1,1 @@
+g++   -std=c++11 -DDEBUG -pthread -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/main.dir/src/color_detect.cpp.o CMakeFiles/main.dir/src/main.cpp.o CMakeFiles/main.dir/src/receive_frame.cpp.o  -o main  -lopencv_world 
