@@ -15,12 +15,13 @@
 ```SHELL
 cd build
 cmake ..
+make -j4
 ./main
 ```
 
 成功运行后会显示如下：
 
-![运行界面](./data/running.png)
+![运行界面](https://github.com/parker-int64/A-color-detection-demo/blob/master/data/running.png)
 设置好参数后，可以点击Sava Parameters按钮来保存参数至`data/settings.yml`,然后可以根据参数来修改源程序的值。  
 后续工作：可以直接从settings.yml读取参数。  
 
